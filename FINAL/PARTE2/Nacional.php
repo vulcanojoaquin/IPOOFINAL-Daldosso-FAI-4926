@@ -36,4 +36,8 @@ class Nacional extends Torneo{
         return $premio;
     }
 
+    public function __toString(){
+        return parent::__toString();
+     }
+
 }

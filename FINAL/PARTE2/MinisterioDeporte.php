@@ -72,7 +72,10 @@ public function otorgarPremioTorneo($idTorneo) {
     return $premio;
 }
 
-
+public function __toString(){
+    return "Año Torneo: " . $this->getAñoTorneo() . "\n" .
+    "Cantidad de torneos: " . count($this->getColTorneosPais()) . "\n";
+}
 
 
     }

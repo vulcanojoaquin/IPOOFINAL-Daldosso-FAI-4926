@@ -17,6 +17,8 @@ class Provincial extends Torneo{
         $this->nombreProvincia = $nombreProvincia;
     }
 
-
+ public function __toString(){
+    return parent::__toString()."nombre provincia: ".$this->getNombreProvincia();
+ }
     
 }

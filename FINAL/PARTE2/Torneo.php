@@ -3,7 +3,7 @@ class Torneo{
     private $idTorneo;
     private $montoPremio;
     private $colPartidos;
-    private $localidad;//nombre o obj?
+    private $localidad;
 
     public function __construct($idTorneo,$montoPremio,$colPartidos,$localidad ){
         $this->idTorneo =$idTorneo;
@@ -57,41 +57,37 @@ class Torneo{
 //metodos-------------------------------------------------------
 
 public function obtenerEquipoGanadorTorneo() {
-    // Crear un arreglo para almacenar la cantidad de victorias y goles de cada equipo
     $equiposData = [];
 
     foreach ($this->colPartidos as $partido) {
-        $equipos = $partido->getColEquipos();  // Obtener los equipos del partido
+        $equipos = $partido->getColEquipos();  
 
-        // Acceder al nombre de los equipos, que deben ser cadenas
+
         $equipo1 = $equipos[0]->getNombre();
         $equipo2 = $equipos[1]->getNombre();
 
-        // Verificar quién ganó el partido
+
         if ($partido->getCantGoles1() > $partido->getCantGoles2()) {
-            // Equipo 1 ganó
+           
             $ganador = $equipo1;
             $golesGanador = $partido->getCantGoles1();
         } elseif ($partido->getCantGoles1() < $partido->getCantGoles2()) {
-            // Equipo 2 ganó
+          
             $ganador = $equipo2;
             $golesGanador = $partido->getCantGoles2();
         } else {
-            // Empate
+          
             continue;
         }
 
-        // Si el equipo no está en el arreglo, inicializa sus estadísticas
         if (!isset($equiposData[$ganador])) {
             $equiposData[$ganador] = ['victorias' => 0, 'goles' => 0];
         }
 
-        // Incrementa la victoria y los goles
         $equiposData[$ganador]['victorias'] += 1;
         $equiposData[$ganador]['goles'] += $golesGanador;
     }
 
-    // Ahora buscamos el equipo con más victorias
     $ganadorTorneo = null;
     $maxVictorias = 0;
     $golesMaximos = 0;
@@ -110,7 +106,6 @@ public function obtenerEquipoGanadorTorneo() {
         }
     }
 
-    // Retornamos el equipo ganador y sus datos
     return [
         'equipo' => $ganadorTorneo,
         'victorias' => $maxVictorias,
@@ -119,7 +114,7 @@ public function obtenerEquipoGanadorTorneo() {
 }
 
 
-    //--------------------
+
 
     public function obtenerPremioTorneo() {
 
@@ -135,7 +130,9 @@ public function obtenerEquipoGanadorTorneo() {
         return $premio;
     }
 
-
+    public function __toString(){
+        return "id torneo: ".$this->getIdTorneo()."monto premio: ".$this->getMontoPremio()."colPartidos: ".$this->getColPartidos()."localidad:".$this->getLocalidad();
+    }
 
 
 }
