@@ -4,7 +4,7 @@ class Partido{
     private $fecha;
     private $cantGoles1;
     private $cantGoles2;
-    private $colEquipos;//array de obj
+    private $colEquipos;
 
     public function __construct($idPartido,$fecha ,$cantGoles1, $cantGoles2, $colEquipos){
         $this->idPartido=$idPartido;

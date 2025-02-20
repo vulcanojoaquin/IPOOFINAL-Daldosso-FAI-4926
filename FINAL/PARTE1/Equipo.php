@@ -3,7 +3,7 @@ class Equipo{
     private $nombre;
     private $nombreCapitan;
     private $cantJugadores;
-    private $objCategoria ;//obj
+    private $objCategoria ;
 
     public function __construct($nombre, $nombreCapitan, $cantJugadores,$objCategoria){
         $this->nombre=$nombre;
